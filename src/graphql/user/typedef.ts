@@ -1,5 +1,5 @@
 const queries = `#graphql
-    helloWorld: String
+    getUserToken(email: String!, password: String!): String
 `;
 
 const mutations = `#graphql

@@ -1,7 +1,6 @@
 import express from 'express';
-const { PORT } = require('./constants');
+const { Constants } = require('./constants/index');
 import { expressMiddleware } from "@apollo/server/express4"
-import { prismaClient } from './lib/db';
 import createApolloGraphqlServer from './graphql';
 
 async function init() {
@@ -15,8 +14,8 @@ async function init() {
 
     app.use("/graphql", expressMiddleware(await createApolloGraphqlServer()));
 
-    app.listen(PORT, () => {
-        console.log(`Healers Server is listening on port ${PORT}!`)
+    app.listen(Constants.PORT, () => {
+        console.log(`Healers Server is listening on port ${Constants.PORT}!`)
     })
 }
 
