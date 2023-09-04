@@ -21,3 +21,14 @@ model User {
 
   @@map("users")
 }
+
+model Log {
+  id            String   @id @default(uuid())
+  requestMethod String   @map("request_method")
+  requestUrl    String   @map("request_url")
+  requestOrigin String   @map("request_origin")
+  errorMessage  String   @map("error_message")
+  timestamp     DateTime @default(now())
+
+  @@map("logs")
+}

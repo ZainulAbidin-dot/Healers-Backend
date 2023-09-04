@@ -1,5 +1,5 @@
 import { Constants } from '../../../constants/index';
-export const responseWrapper = (response: any, status: number, message: string, data: object | string | null = null, devOnlyData = null) => {
+export const responseWrapper = (response: any, status: number, message: string, data: object | string | null = null, devOnlyData: object | string | null = null) => {
     if (status === 204) {
         return response.sendStatus(status);
     }

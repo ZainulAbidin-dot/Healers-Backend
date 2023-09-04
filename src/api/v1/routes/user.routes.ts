@@ -1,11 +1,10 @@
 
 const express = require('express');
-const router = express.Router();
+const userRouter = express.Router();
 import UserController from '../controllers/user.controller';
 
-// Define routes and their handlers
-router.get('/users', UserController);
-router.post('/users', UserController.signUp);
+userRouter.post('/user-sign-up', UserController.signUp);
+userRouter.post('/user-sign-in', UserController.signIn);
 
 
-export default router;
+export default userRouter;

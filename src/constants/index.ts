@@ -1,12 +1,9 @@
-const PORT: number = Number(process.env.PORT) || 3000;
-const DATABASE_URL = process.env.DATABASE_URL;
-const JWT_SECRET = process.env.JWT_SECRET ?? "secret";
-const APP_DEBUG: boolean = Boolean(process.env.APP_DEBUG) ?? true;
 export const Constants = {
-    PORT,
-    DATABASE_URL,
-    JWT_SECRET,
-    APP_DEBUG
+    PORT: Number(process.env.PORT) || 3000,
+    DATABASE_URL: process.env.DATABASE_URL,
+    JWT_SECRET: process.env.JWT_SECRET ?? "secret",
+    APP_DEBUG: Boolean(process.env.APP_DEBUG) ?? true,
+    NODE_ENV: process.env.NODE_ENV ?? "development",
 }
 
 
