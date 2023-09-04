@@ -1,7 +1,8 @@
 import express from 'express';
 const { Constants } = require('./constants/index');
 import { expressMiddleware } from "@apollo/server/express4"
-import createApolloGraphqlServer from './graphql';
+import createApolloGraphqlServer from './api/graphql';
+const userRoutes = require('./api/routes/user.routes');
 
 async function init() {
 
@@ -11,6 +12,8 @@ async function init() {
     app.get('/', (req, res) => {
         res.send('Hello World!');
     })
+
+    app.use("/api", userRoutes);
 
     app.use("/graphql", expressMiddleware(await createApolloGraphqlServer()));
 

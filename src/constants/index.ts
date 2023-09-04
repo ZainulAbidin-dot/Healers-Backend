@@ -1,9 +1,70 @@
 const PORT: number = Number(process.env.PORT) || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
 const JWT_SECRET = process.env.JWT_SECRET ?? "secret";
-
+const APP_DEBUG: boolean = Boolean(process.env.APP_DEBUG) ?? true;
 export const Constants = {
     PORT,
     DATABASE_URL,
-    JWT_SECRET
+    JWT_SECRET,
+    APP_DEBUG
 }
+
+
+export const StatusCodes = {
+    CONTINUE: { code: 100, reasonPhrase: 'Continue' },
+    SWITCHING_PROTOCOLS: { code: 101, reasonPhrase: 'Switching Protocols' },
+    PROCESSING: { code: 102, reasonPhrase: 'Processing' },
+    OK: { code: 200, reasonPhrase: 'OK' },
+    CREATED: { code: 201, reasonPhrase: 'Created' },
+    ACCEPTED: { code: 202, reasonPhrase: 'Accepted' },
+    NON_AUTHORITATIVE_INFORMATION: { code: 203, reasonPhrase: 'Non Authoritative Information' },
+    NO_CONTENT: { code: 204, reasonPhrase: 'No Content' },
+    RESET_CONTENT: { code: 205, reasonPhrase: 'Reset Content' },
+    PARTIAL_CONTENT: { code: 206, reasonPhrase: 'Partial Content' },
+    MULTI_STATUS: { code: 207, reasonPhrase: 'Multi-Status' },
+    MULTIPLE_CHOICES: { code: 300, reasonPhrase: 'Multiple Choices' },
+    MOVED_PERMANENTLY: { code: 301, reasonPhrase: 'Moved Permanently' },
+    MOVED_TEMPORARILY: { code: 302, reasonPhrase: 'Moved Temporarily' },
+    SEE_OTHER: { code: 303, reasonPhrase: 'See Other' },
+    NOT_MODIFIED: { code: 304, reasonPhrase: 'Not Modified' },
+    USE_PROXY: { code: 305, reasonPhrase: 'Use Proxy' },
+    TEMPORARY_REDIRECT: { code: 307, reasonPhrase: 'Temporary Redirect' },
+    PERMANENT_REDIRECT: { code: 308, reasonPhrase: 'Permanent Redirect' },
+    BAD_REQUEST: { code: 400, reasonPhrase: 'Bad Request' },
+    UNAUTHORIZED: { code: 401, reasonPhrase: 'Unauthorized' },
+    PAYMENT_REQUIRED: { code: 402, reasonPhrase: 'Payment Required' },
+    FORBIDDEN: { code: 403, reasonPhrase: 'Forbidden' },
+    NOT_FOUND: { code: 404, reasonPhrase: 'Not Found' },
+    METHOD_NOT_ALLOWED: { code: 405, reasonPhrase: 'Method Not Allowed' },
+    NOT_ACCEPTABLE: { code: 406, reasonPhrase: 'Not Acceptable' },
+    PROXY_AUTHENTICATION_REQUIRED: { code: 407, reasonPhrase: 'Proxy Authentication Required' },
+    REQUEST_TIMEOUT: { code: 408, reasonPhrase: 'Request Timeout' },
+    CONFLICT: { code: 409, reasonPhrase: 'Conflict' },
+    GONE: { code: 410, reasonPhrase: 'Gone' },
+    LENGTH_REQUIRED: { code: 411, reasonPhrase: 'Length Required' },
+    PRECONDITION_FAILED: { code: 412, reasonPhrase: 'Precondition Failed' },
+    REQUEST_TOO_LONG: { code: 413, reasonPhrase: 'Request Entity Too Large' },
+    REQUEST_URI_TOO_LONG: { code: 414, reasonPhrase: 'Request-URI Too Long' },
+    UNSUPPORTED_MEDIA_TYPE: { code: 415, reasonPhrase: 'Unsupported Media Type' },
+    REQUESTED_RANGE_NOT_SATISFIABLE: { code: 416, reasonPhrase: 'Requested Range Not Satisfiable' },
+    EXPECTATION_FAILED: { code: 417, reasonPhrase: 'Expectation Failed' },
+    IM_A_TEAPOT: { code: 418, reasonPhrase: "I'm a teapot" },
+    INSUFFICIENT_SPACE_ON_RESOURCE: { code: 419, reasonPhrase: 'Insufficient Space on Resource' },
+    METHOD_FAILURE: { code: 420, reasonPhrase: 'Method Failure' },
+    MISDIRECTED_REQUEST: { code: 421, reasonPhrase: 'Misdirected Request' },
+    UNPROCESSABLE_ENTITY: { code: 422, reasonPhrase: 'Unprocessable Entity' },
+    LOCKED: { code: 423, reasonPhrase: 'Locked' },
+    FAILED_DEPENDENCY: { code: 424, reasonPhrase: 'Failed Dependency' },
+    PRECONDITION_REQUIRED: { code: 428, reasonPhrase: 'Precondition Required' },
+    TOO_MANY_REQUESTS: { code: 429, reasonPhrase: 'Too Many Requests' },
+    REQUEST_HEADER_FIELDS_TOO_LARGE: { code: 431, reasonPhrase: 'Request Header Fields Too Large' },
+    UNAVAILABLE_FOR_LEGAL_REASONS: { code: 451, reasonPhrase: 'Unavailable For Legal Reasons' },
+    INTERNAL_SERVER_ERROR: { code: 500, reasonPhrase: 'Internal Server Error' },
+    NOT_IMPLEMENTED: { code: 501, reasonPhrase: 'Not Implemented' },
+    BAD_GATEWAY: { code: 502, reasonPhrase: 'Bad Gateway' },
+    SERVICE_UNAVAILABLE: { code: 503, reasonPhrase: 'Service Unavailable' },
+    GATEWAY_TIMEOUT: { code: 504, reasonPhrase: 'Gateway Timeout' },
+    HTTP_VERSION_NOT_SUPPORTED: { code: 505, reasonPhrase: 'HTTP Version Not Supported' },
+    INSUFFICIENT_STORAGE: { code: 507, reasonPhrase: 'Insufficient Storage' },
+    NETWORK_AUTHENTICATION_REQUIRED: { code: 511, reasonPhrase: 'Network Authentication Required' },
+};

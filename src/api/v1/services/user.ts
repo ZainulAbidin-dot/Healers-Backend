@@ -1,6 +1,6 @@
 import { createHmac, randomBytes } from "crypto";
 import { prismaClient } from "../lib/db";
-import { Constants } from "../constants/index";
+import { Constants } from "../../../constants/index";
 import JWT from "jsonwebtoken";
 
 export interface CreateUserPayload {
