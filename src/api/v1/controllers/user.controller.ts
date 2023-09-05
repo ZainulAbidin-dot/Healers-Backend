@@ -1,11 +1,12 @@
 import { StatusCodes } from "../../../constants";
-import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../services/user"
-import { responseWrapper } from "../utils/responsewrapper";
+import { responseWrapper } from "../../../utils/responsewrapper";
+import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../services/user.sevice"
 
 class UserController {
-    public static signUp = async (req: { body: CreateUserPayload }, res: any) => {
+    public static signUp = async (req: any, res: any) => {
         try {
-            const result = await UserService.createUser(req.body);
+            const data: CreateUserPayload = req.body;
+            const result = await UserService.createUser(data);
             return responseWrapper(res, StatusCodes.OK.code, "User successfully created", result);
         } catch (error) {
             console.log("🚀 ~ file: user.controller.ts ~ UserController ~ signUp= ~ error:", error)
@@ -14,9 +15,10 @@ class UserController {
     }
 
 
-    public static signIn = async (req: { body: GenerateUserTokenPayload }, res: any) => {
+    public static signIn = async (req: any, res: any) => {
         try {
-            const result = await UserService.getUserToken(req.body);
+            const data: GenerateUserTokenPayload = req.body;
+            const result = await UserService.getUserToken(data);
             return responseWrapper(res, StatusCodes.OK.code, "User successfully logged in", result);
         } catch (error) {
             console.log("🚀 ~ file: user.controller.ts ~ UserController ~ signIn= ~ error:", error)

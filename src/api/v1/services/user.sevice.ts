@@ -1,5 +1,5 @@
 import { createHmac, randomBytes } from "crypto";
-import { prismaClient } from "../lib/db";
+import { prismaClient } from "../../../lib/db";
 import { Constants } from "../../../constants/index";
 import JWT from "jsonwebtoken";
 
@@ -46,7 +46,7 @@ class UserService {
 
     public static async getUserToken(payload: GenerateUserTokenPayload) {
         const { email, password } = payload;
-        const user = await UserService.getUserByEmail(email);
+        const user = await this.getUserByEmail(email);
         if (!user) {
             throw new Error("User not found");
         }

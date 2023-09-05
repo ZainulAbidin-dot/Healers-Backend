@@ -1,5 +1,5 @@
-import { logger } from "../../../config/logger";
-import { Constants, StatusCodes } from "../../../constants";
+import { logger } from "../config/logger";
+import { Constants, StatusCodes } from "../constants";
 import { responseWrapper } from "../utils/responsewrapper";
 
 const errorHandler = (err: any, req: any, res: any, next: any) => {

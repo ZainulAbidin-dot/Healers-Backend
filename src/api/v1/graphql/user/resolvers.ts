@@ -1,4 +1,4 @@
-import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../../services/user";
+import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../../services/user.sevice";
 
 const queries = {
     getUserToken: async (_: any, payload: GenerateUserTokenPayload) => {

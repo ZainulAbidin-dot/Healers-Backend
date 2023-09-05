@@ -2,7 +2,7 @@ import express from 'express';
 const { Constants } = require('./constants/index');
 import { expressMiddleware } from "@apollo/server/express4"
 import createApolloGraphqlServer from './api/v1/graphql';
-import errorHandler from './api/v1/middlewares/errorHandler';
+import errorHandler from './middlewares/errorHandler';
 import userRouter from './api/v1/routes/user.routes';
 
 async function init() {

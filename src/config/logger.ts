@@ -1,4 +1,4 @@
-import { prismaClient } from "../api/v1/lib/db"
+import { prismaClient } from "../lib/db"
 
 export const logger = async (method: string, url: string, origin: string, message: string) => {
     try {
