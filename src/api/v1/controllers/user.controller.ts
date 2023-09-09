@@ -1,6 +1,6 @@
 import { StatusCodes } from "../../../constants";
 import { responseWrapper } from "../../../utils/responsewrapper";
-import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../services/user.sevice"
+import UserService, { CreateUserPayload, GenerateUserTokenPayload } from "../services/user.service"
 
 class UserController {
     public static signUp = async (req: any, res: any) => {

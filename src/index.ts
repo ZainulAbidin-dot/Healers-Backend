@@ -4,6 +4,7 @@ import { expressMiddleware } from "@apollo/server/express4"
 import createApolloGraphqlServer from './api/v1/graphql';
 import errorHandler from './middlewares/errorHandler';
 import userRouter from './api/v1/routes/user.routes';
+import authRouter from './api/v1/routes/auth.routes';
 
 async function init() {
 
@@ -15,7 +16,8 @@ async function init() {
         res.send('Hello World!');
     })
 
-    app.use("/api/v1", userRouter);
+    app.use("/api/v1/auth", authRouter);
+    app.use("/api/v1/user", userRouter);
 
     app.use("/graphql", expressMiddleware(await createApolloGraphqlServer()));
 

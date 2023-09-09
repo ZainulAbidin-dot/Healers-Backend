@@ -1,13 +1,14 @@
 import { createHmac, randomBytes } from "crypto";
 import { prismaClient } from "../../../lib/db";
-import { Constants } from "../../../constants/index";
-import JWT from "jsonwebtoken";
+import { Role } from "@prisma/client";
+import jwtToken from "../../../utils/generateJWTToken";
 
 export interface CreateUserPayload {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
+    role: Role[];
 }
 
 export interface GenerateUserTokenPayload {
@@ -16,12 +17,12 @@ export interface GenerateUserTokenPayload {
 }
 
 class UserService {
-    private static generateHashedPassword(salt: string, password: string) {
+    public static generateHashedPassword(salt: string, password: string) {
         const hashedPassword = createHmac("sha512", salt).update(password).digest("hex");
         return hashedPassword;
     }
     public static createUser(payload: CreateUserPayload) {
-        const { firstName, lastName, email, password } = payload;
+        const { firstName, lastName, email, password, role } = payload;
         const salt = randomBytes(32).toString("hex");
         const hashedPassword = UserService.generateHashedPassword(salt, password);
 
@@ -32,6 +33,7 @@ class UserService {
                 email,
                 password: hashedPassword,
                 salt,
+                role,
             },
         })
     }
@@ -53,12 +55,11 @@ class UserService {
         if (user.password !== UserService.generateHashedPassword(user.salt, password)) {
             throw new Error("Incorrect Password");
         }
-        const token = JWT.sign({
+        const token = jwtToken({
             email: user.email,
+            role: user.role,
             id: user.id,
-        },
-            Constants.JWT_SECRET
-        );
+        });
         return token;
     }
 }
